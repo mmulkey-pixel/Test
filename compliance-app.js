@@ -46,7 +46,7 @@
     document.getElementById("heroTitle").innerHTML = `${fw.name}<br/><span class="hero-accent">Compliance Mapping</span>`;
     document.getElementById("heroDesc").textContent = fw.shortDesc;
     document.getElementById("heroSection").style.background =
-      `linear-gradient(135deg, #0F172A 0%, ${fw.color}22 50%, #0A2563 100%)`;
+      "linear-gradient(135deg, #111111 0%, #1A1A1A 50%, #111111 100%)";
     const stats = [
       { num: fw.mappedControls, label: "Controls Mapped" },
       { num: fw.tiers ? fw.tiers.length : "—", label: "Tiers / Levels" },
