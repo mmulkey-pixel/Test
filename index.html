@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CMMC Compliance Mapping – KeeperPAM</title>
+  <title>KeeperPAM Compliance Hub</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="logo-block">
@@ -21,305 +20,81 @@
         <div>
           <span class="logo-primary">KeeperPAM</span>
           <span class="logo-divider">|</span>
-          <span class="logo-secondary">CMMC Compliance Mapping</span>
+          <span class="logo-secondary">Compliance Hub</span>
         </div>
       </div>
       <nav class="main-nav">
-        <a href="#overview">Overview</a>
-        <a href="#levels">CMMC Levels</a>
-        <a href="#matrix">Compliance Matrix</a>
-        <a href="#controls">Controls</a>
-        <a href="#products">KeeperPAM Features</a>
+        <a href="#frameworks">Frameworks</a>
+        <a href="#products">Products</a>
       </nav>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hub-hero">
     <div class="container">
-      <div class="hero-badge">CMMC 2.0 Framework</div>
-      <h1>CMMC Compliance Mapping<br /><span class="hero-accent">with KeeperPAM</span></h1>
-      <p class="hero-sub">Map every Cybersecurity Maturity Model Certification practice to KeeperPAM's privileged access management capabilities — across all three maturity levels.</p>
+      <div class="hero-badge">15 Regulatory Frameworks</div>
+      <h1>KeeperPAM<br/><span class="hero-accent">Compliance Hub</span></h1>
+      <p class="hero-sub">Map KeeperPAM's privileged access management capabilities to the regulatory frameworks and security standards that matter to your organization.</p>
       <div class="hero-stats">
-        <div class="stat"><span class="stat-num">3</span><span class="stat-label">CMMC Levels</span></div>
-        <div class="stat"><span class="stat-num">14</span><span class="stat-label">Domains</span></div>
-        <div class="stat"><span class="stat-num">110+</span><span class="stat-label">Controls</span></div>
-        <div class="stat"><span class="stat-num">6</span><span class="stat-label">KeeperPAM Modules</span></div>
+        <div class="stat"><span class="stat-num">15</span><span class="stat-label">Frameworks</span></div>
+        <div class="stat"><span class="stat-num">130+</span><span class="stat-label">Controls Mapped</span></div>
+        <div class="stat"><span class="stat-num">6</span><span class="stat-label">PAM Modules</span></div>
+        <div class="stat"><span class="stat-num">5</span><span class="stat-label">Industries</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Overview -->
-  <section id="overview" class="section section-light">
+  <!-- Framework Grid -->
+  <section id="frameworks" class="section section-light">
     <div class="container">
-      <h2 class="section-title">What is CMMC?</h2>
-      <p class="section-intro">The Cybersecurity Maturity Model Certification (CMMC) 2.0 is a DoD framework requiring defense contractors to implement and verify cybersecurity practices that protect Controlled Unclassified Information (CUI) and Federal Contract Information (FCI).</p>
-      <div class="card-grid three-col">
-        <div class="card card-blue">
-          <div class="card-icon">🔐</div>
-          <h3>Protect CUI &amp; FCI</h3>
-          <p>Safeguard sensitive federal contract and controlled unclassified information across the defense industrial base.</p>
-        </div>
-        <div class="card card-purple">
-          <div class="card-icon">✅</div>
-          <h3>Third-Party Verified</h3>
-          <p>Level 2 and Level 3 require assessments by C3PAOs (Third-Party Assessment Organizations) or government assessors.</p>
-        </div>
-        <div class="card card-green">
-          <div class="card-icon">🏗️</div>
-          <h3>Built on NIST SP 800-171</h3>
-          <p>CMMC 2.0 aligns directly with NIST SP 800-171 Rev 2 practices for protecting CUI in nonfederal systems.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <h2 class="section-title">Select a Compliance Framework</h2>
+      <p class="section-intro">Choose a framework below to explore how KeeperPAM maps to its specific controls and requirements.</p>
 
-  <!-- CMMC Levels -->
-  <section id="levels" class="section section-dark">
-    <div class="container">
-      <h2 class="section-title">CMMC Maturity Levels</h2>
-      <p class="section-intro">CMMC 2.0 defines three progressive maturity levels, each building on the previous with additional practices and rigor.</p>
-      <div class="levels-grid">
-
-        <div class="level-card level-1">
-          <div class="level-header">
-            <span class="level-badge">Level 1</span>
-            <h3>Foundational</h3>
-          </div>
-          <div class="level-body">
-            <div class="level-meta">
-              <span class="meta-item"><strong>17</strong> Practices</span>
-              <span class="meta-item"><strong>6</strong> Domains</span>
-              <span class="meta-item">Self-Assessment</span>
-            </div>
-            <p>Basic cyber hygiene for all DoD contractors handling FCI. Annual self-assessment with executive affirmation required.</p>
-            <ul class="level-bullets">
-              <li>Protect FCI in company systems</li>
-              <li>Basic access control</li>
-              <li>User identification &amp; authentication</li>
-              <li>Incident response basics</li>
-            </ul>
-            <div class="level-target">Target: All contractors handling FCI</div>
-          </div>
-        </div>
-
-        <div class="level-card level-2">
-          <div class="level-header">
-            <span class="level-badge">Level 2</span>
-            <h3>Advanced</h3>
-          </div>
-          <div class="level-body">
-            <div class="level-meta">
-              <span class="meta-item"><strong>110</strong> Practices</span>
-              <span class="meta-item"><strong>14</strong> Domains</span>
-              <span class="meta-item">C3PAO Assessment</span>
-            </div>
-            <p>Advanced cyber practices for contractors handling CUI. Triennial third-party assessments for critical programs.</p>
-            <ul class="level-bullets">
-              <li>Full NIST SP 800-171 alignment</li>
-              <li>Multi-factor authentication</li>
-              <li>Privileged access management</li>
-              <li>Audit &amp; accountability</li>
-              <li>Configuration management</li>
-            </ul>
-            <div class="level-target">Target: Contractors handling CUI</div>
-          </div>
-        </div>
-
-        <div class="level-card level-3">
-          <div class="level-header">
-            <span class="level-badge">Level 3</span>
-            <h3>Expert</h3>
-          </div>
-          <div class="level-body">
-            <div class="level-meta">
-              <span class="meta-item"><strong>110+</strong> Practices</span>
-              <span class="meta-item"><strong>14</strong> Domains</span>
-              <span class="meta-item">Gov. Led Assessment</span>
-            </div>
-            <p>Expert-level practices for contractors supporting the highest priority programs. DIBCAC government-led assessments.</p>
-            <ul class="level-bullets">
-              <li>NIST SP 800-172 additions</li>
-              <li>Advanced persistent threat protection</li>
-              <li>Proactive threat hunting</li>
-              <li>Advanced monitoring &amp; detection</li>
-              <li>Supply chain risk management</li>
-            </ul>
-            <div class="level-target">Target: Critical national security programs</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- KeeperPAM Products -->
-  <section id="products" class="section section-light">
-    <div class="container">
-      <h2 class="section-title">KeeperPAM Product Modules</h2>
-      <p class="section-intro">KeeperPAM's unified platform delivers the privileged access management capabilities required across every CMMC domain.</p>
-      <div class="card-grid three-col">
-        <div class="product-card" data-product="kpm">
-          <div class="product-color-bar bar-blue"></div>
-          <div class="product-icon">🔑</div>
-          <h3>Keeper Password Manager</h3>
-          <p>Zero-knowledge encrypted vault for enterprise credentials, MFA codes, and secure sharing with role-based access controls.</p>
-          <div class="product-tags">
-            <span class="tag">Password Vault</span>
-            <span class="tag">MFA</span>
-            <span class="tag">RBAC</span>
-            <span class="tag">Zero-Knowledge</span>
-          </div>
-        </div>
-        <div class="product-card" data-product="kcm">
-          <div class="product-color-bar bar-purple"></div>
-          <div class="product-icon">🖥️</div>
-          <h3>Keeper Connection Manager</h3>
-          <p>Clientless remote desktop gateway with session recording, live monitoring, and zero-trust access to privileged infrastructure.</p>
-          <div class="product-tags">
-            <span class="tag">Session Recording</span>
-            <span class="tag">RDP/SSH</span>
-            <span class="tag">Zero Trust</span>
-            <span class="tag">Audit Trails</span>
-          </div>
-        </div>
-        <div class="product-card" data-product="ksm">
-          <div class="product-color-bar bar-green"></div>
-          <div class="product-icon">🔒</div>
-          <h3>Keeper Secrets Manager</h3>
-          <p>Cloud-native secrets management for CI/CD pipelines, DevOps workflows, and application credentials with zero-knowledge architecture.</p>
-          <div class="product-tags">
-            <span class="tag">Secrets Rotation</span>
-            <span class="tag">CI/CD</span>
-            <span class="tag">API Access</span>
-            <span class="tag">Zero-Knowledge</span>
-          </div>
-        </div>
-        <div class="product-card" data-product="kpam">
-          <div class="product-color-bar bar-orange"></div>
-          <div class="product-icon">🛡️</div>
-          <h3>KeeperPAM Core</h3>
-          <p>Privileged access management with just-in-time provisioning, least-privilege enforcement, and privileged session management.</p>
-          <div class="product-tags">
-            <span class="tag">JIT Access</span>
-            <span class="tag">Least Privilege</span>
-            <span class="tag">PSM</span>
-            <span class="tag">Vaulting</span>
-          </div>
-        </div>
-        <div class="product-card" data-product="reporting">
-          <div class="product-color-bar bar-red"></div>
-          <div class="product-icon">📊</div>
-          <h3>Advanced Reporting &amp; Alerts</h3>
-          <p>Real-time compliance reporting, anomaly detection, SIEM integration, and audit-ready reports for assessors and auditors.</p>
-          <div class="product-tags">
-            <span class="tag">SIEM</span>
-            <span class="tag">Compliance Reports</span>
-            <span class="tag">Alerts</span>
-            <span class="tag">Dashboards</span>
-          </div>
-        </div>
-        <div class="product-card" data-product="sso">
-          <div class="product-color-bar bar-teal"></div>
-          <div class="product-icon">🔗</div>
-          <h3>SSO &amp; Directory Integration</h3>
-          <p>Seamless integration with SAML 2.0, OIDC, Active Directory, LDAP, and identity providers for centralized identity governance.</p>
-          <div class="product-tags">
-            <span class="tag">SAML 2.0</span>
-            <span class="tag">Active Directory</span>
-            <span class="tag">SCIM</span>
-            <span class="tag">LDAP</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Compliance Matrix -->
-  <section id="matrix" class="section section-dark">
-    <div class="container">
-      <h2 class="section-title">Compliance Coverage Matrix</h2>
-      <p class="section-intro">Filter by CMMC level or domain to see how KeeperPAM maps to each practice area.</p>
-
-      <div class="filter-bar">
-        <div class="filter-group">
-          <label>Filter by Level:</label>
-          <button class="filter-btn active" data-filter-level="all">All Levels</button>
-          <button class="filter-btn" data-filter-level="1">Level 1</button>
-          <button class="filter-btn" data-filter-level="2">Level 2</button>
-          <button class="filter-btn" data-filter-level="3">Level 3</button>
-        </div>
-        <div class="filter-group">
-          <label>Coverage:</label>
-          <button class="filter-btn active" data-filter-coverage="all">All</button>
-          <button class="filter-btn" data-filter-coverage="full">Full Coverage</button>
-          <button class="filter-btn" data-filter-coverage="partial">Partial</button>
-        </div>
+      <!-- Category Filters -->
+      <div class="category-filters" id="categoryFilters">
+        <button class="cat-btn active" data-cat="all">All Frameworks</button>
+        <button class="cat-btn" data-cat="federal">Federal &amp; Defense</button>
+        <button class="cat-btn" data-cat="financial">Financial Services</button>
+        <button class="cat-btn" data-cat="healthcare">Healthcare</button>
+        <button class="cat-btn" data-cat="international">Privacy &amp; International</button>
+        <button class="cat-btn" data-cat="infrastructure">Critical Infrastructure</button>
       </div>
 
-      <div class="matrix-table-wrap">
-        <table class="matrix-table" id="matrixTable">
-          <thead>
-            <tr>
-              <th>Domain</th>
-              <th>Practice ID</th>
-              <th>Practice Description</th>
-              <th>Level</th>
-              <th>KeeperPAM Module</th>
-              <th>Coverage</th>
-            </tr>
-          </thead>
-          <tbody id="matrixBody">
-            <!-- Populated by JS -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- Detailed Controls -->
-  <section id="controls" class="section section-light">
-    <div class="container">
-      <h2 class="section-title">Domain Controls Breakdown</h2>
-      <p class="section-intro">Expand each domain to see detailed control mappings, implementation guidance, and KeeperPAM capabilities.</p>
-      <div id="accordionContainer" class="accordion-container">
+      <div class="frameworks-grid" id="frameworksGrid">
         <!-- Populated by JS -->
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container cta-inner">
-      <div>
-        <h2>Ready to Achieve CMMC Compliance?</h2>
-        <p>KeeperPAM provides the unified PAM platform your organization needs to meet CMMC Level 1, 2, and 3 requirements.</p>
-      </div>
-      <div class="cta-buttons">
-        <a href="#matrix" class="btn btn-primary">View Full Matrix</a>
-        <a href="#controls" class="btn btn-outline">Explore Controls</a>
+  <!-- Products -->
+  <section id="products" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">KeeperPAM Product Modules</h2>
+      <p class="section-intro">Six integrated modules deliver the PAM capabilities required across every framework.</p>
+      <div class="card-grid three-col">
+        <div class="product-card"><div class="product-color-bar bar-blue"></div><div class="product-icon">🔑</div><h3>Keeper Password Manager</h3><p>Zero-knowledge encrypted vault for enterprise credentials, MFA codes, and secure sharing with role-based access controls.</p><div class="product-tags"><span class="tag">Password Vault</span><span class="tag">MFA</span><span class="tag">RBAC</span><span class="tag">Zero-Knowledge</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-purple"></div><div class="product-icon">🖥️</div><h3>Keeper Connection Manager</h3><p>Clientless remote desktop gateway with session recording, live monitoring, and zero-trust access to privileged infrastructure.</p><div class="product-tags"><span class="tag">Session Recording</span><span class="tag">RDP/SSH</span><span class="tag">Zero Trust</span><span class="tag">Audit Trails</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-green"></div><div class="product-icon">🔒</div><h3>Keeper Secrets Manager</h3><p>Cloud-native secrets management for CI/CD pipelines, DevOps workflows, and application credentials with zero-knowledge architecture.</p><div class="product-tags"><span class="tag">Secrets Rotation</span><span class="tag">CI/CD</span><span class="tag">API Access</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-orange"></div><div class="product-icon">🛡️</div><h3>KeeperPAM Core</h3><p>Privileged access management with just-in-time provisioning, least-privilege enforcement, and privileged session management.</p><div class="product-tags"><span class="tag">JIT Access</span><span class="tag">Least Privilege</span><span class="tag">PSM</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-red"></div><div class="product-icon">📊</div><h3>Advanced Reporting &amp; Alerts</h3><p>Real-time compliance reporting, anomaly detection, SIEM integration, and audit-ready reports for assessors and auditors.</p><div class="product-tags"><span class="tag">SIEM</span><span class="tag">Compliance Reports</span><span class="tag">Alerts</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-teal"></div><div class="product-icon">🔗</div><h3>SSO &amp; Directory Integration</h3><p>Seamless integration with SAML 2.0, OIDC, Active Directory, LDAP, and identity providers for centralized identity governance.</p><div class="product-tags"><span class="tag">SAML 2.0</span><span class="tag">Active Directory</span><span class="tag">SCIM</span></div></div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="8" fill="#0057FF"/>
-          <path d="M20 8L10 14v8l10 6 10-6v-8L20 8z" fill="white" opacity="0.9"/>
-          <path d="M20 22v8" stroke="white" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="20" cy="31" r="2" fill="white"/>
-        </svg>
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#0057FF"/><path d="M20 8L10 14v8l10 6 10-6v-8L20 8z" fill="white" opacity="0.9"/><path d="M20 22v8" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="31" r="2" fill="white"/></svg>
         <span>KeeperPAM</span>
       </div>
-      <p class="footer-note">This mapping is provided for informational purposes. Organizations should conduct formal CMMC assessments with qualified C3PAOs. References: CMMC 2.0 Model, NIST SP 800-171 Rev 2, NIST SP 800-172.</p>
-      <p class="footer-copy">&copy; 2026 Keeper Security. CMMC 2.0 Framework — DoD.</p>
+      <p class="footer-note">Compliance mappings are provided for informational purposes. Organizations should conduct formal assessments with qualified assessors. References: CMMC 2.0, NIST SP 800-171/172/63, PCI DSS 4.0, HIPAA Security Rule, GDPR, SOC 2 TSC, ISO/IEC 27001:2022, FedRAMP, GLBA Safeguards Rule, NYDFS 23 NYCRR 500, FISMA, SOX Section 404, NCUA Part 748, CIS Controls v8, NERC CIP.</p>
+      <p class="footer-copy">&copy; 2026 Keeper Security, Inc.</p>
     </div>
   </footer>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script src="frameworks-index.js"></script>
+  <script src="landing.js"></script>
 </body>
 </html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance Mapping – KeeperPAM</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo-block">
+        <a href="index.html" class="back-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          All Frameworks
+        </a>
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="#0057FF"/>
+          <path d="M20 8L10 14v8l10 6 10-6v-8L20 8z" fill="white" opacity="0.9"/>
+          <path d="M20 22v8" stroke="white" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="20" cy="31" r="2" fill="white"/>
+        </svg>
+        <div>
+          <span class="logo-primary">KeeperPAM</span>
+          <span class="logo-divider">|</span>
+          <span class="logo-secondary" id="headerFrameworkName">Compliance Mapping</span>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="#overview">Overview</a>
+        <a href="#matrix">Matrix</a>
+        <a href="#controls">Controls</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="heroSection">
+    <div class="container">
+      <div class="hero-badge" id="heroBadge">Framework</div>
+      <h1 id="heroTitle">Compliance Mapping</h1>
+      <p class="hero-sub" id="heroDesc">Loading framework data...</p>
+      <div class="hero-stats" id="heroStats"></div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section id="overview" class="section section-light">
+    <div class="container">
+      <h2 class="section-title" id="overviewTitle">About the Framework</h2>
+      <p class="section-intro" id="overviewDesc"></p>
+      <div class="card-grid four-col" id="overviewCards"></div>
+    </div>
+  </section>
+
+  <!-- Tiers / Levels -->
+  <section class="section section-dark" id="tiersSection">
+    <div class="container">
+      <h2 class="section-title" id="tiersTitle">Framework Structure</h2>
+      <p class="section-intro" id="tiersDesc"></p>
+      <div class="levels-grid" id="tiersGrid"></div>
+    </div>
+  </section>
+
+  <!-- KeeperPAM Products (static) -->
+  <section class="section section-light">
+    <div class="container">
+      <h2 class="section-title">KeeperPAM Product Modules</h2>
+      <p class="section-intro">Six integrated modules deliver the PAM capabilities required across this framework.</p>
+      <div class="card-grid three-col">
+        <div class="product-card"><div class="product-color-bar bar-blue"></div><div class="product-icon">🔑</div><h3>Keeper Password Manager</h3><p>Zero-knowledge encrypted vault for enterprise credentials, MFA codes, and secure sharing with role-based access controls.</p><div class="product-tags"><span class="tag">Password Vault</span><span class="tag">MFA</span><span class="tag">RBAC</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-purple"></div><div class="product-icon">🖥️</div><h3>Keeper Connection Manager</h3><p>Clientless remote desktop gateway with session recording, live monitoring, and zero-trust access to privileged infrastructure.</p><div class="product-tags"><span class="tag">Session Recording</span><span class="tag">RDP/SSH</span><span class="tag">Zero Trust</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-green"></div><div class="product-icon">🔒</div><h3>Keeper Secrets Manager</h3><p>Cloud-native secrets management for CI/CD pipelines and application credentials with automated rotation.</p><div class="product-tags"><span class="tag">Secrets Rotation</span><span class="tag">CI/CD</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-orange"></div><div class="product-icon">🛡️</div><h3>KeeperPAM Core</h3><p>Privileged access management with just-in-time provisioning, least-privilege enforcement, and session management.</p><div class="product-tags"><span class="tag">JIT Access</span><span class="tag">Least Privilege</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-red"></div><div class="product-icon">📊</div><h3>Advanced Reporting &amp; Alerts</h3><p>Real-time compliance reporting, anomaly detection, SIEM integration, and audit-ready reports for assessors.</p><div class="product-tags"><span class="tag">SIEM</span><span class="tag">Compliance Reports</span></div></div>
+        <div class="product-card"><div class="product-color-bar bar-teal"></div><div class="product-icon">🔗</div><h3>SSO &amp; Directory Integration</h3><p>Seamless integration with SAML 2.0, OIDC, Active Directory, LDAP for centralized identity governance.</p><div class="product-tags"><span class="tag">SAML 2.0</span><span class="tag">Active Directory</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Compliance Matrix -->
+  <section id="matrix" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Compliance Coverage Matrix</h2>
+      <p class="section-intro">Filter by tier or coverage level. Click a coverage badge to see how each KeeperPAM module addresses that specific control.</p>
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label>Tier:</label>
+          <div id="tierFilters"></div>
+        </div>
+        <div class="filter-group">
+          <label>Coverage:</label>
+          <button class="filter-btn active" data-filter-coverage="all">All</button>
+          <button class="filter-btn" data-filter-coverage="full">Full</button>
+          <button class="filter-btn" data-filter-coverage="partial">Partial</button>
+        </div>
+      </div>
+      <div class="matrix-table-wrap">
+        <table class="matrix-table" id="matrixTable">
+          <thead>
+            <tr>
+              <th>Domain</th>
+              <th>Control ID</th>
+              <th>Description</th>
+              <th>Tier</th>
+              <th>KeeperPAM Modules</th>
+              <th>Coverage</th>
+            </tr>
+          </thead>
+          <tbody id="matrixBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Domain Controls Accordion -->
+  <section id="controls" class="section section-light">
+    <div class="container">
+      <h2 class="section-title">Controls Breakdown by Domain</h2>
+      <p class="section-intro">Expand each domain to view individual controls, implementation guidance, and KeeperPAM coverage details.</p>
+      <div id="accordionContainer" class="accordion-container"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container cta-inner">
+      <div>
+        <h2>Ready to Achieve Compliance?</h2>
+        <p>KeeperPAM provides the unified PAM platform your organization needs to meet regulatory requirements and pass audits.</p>
+      </div>
+      <div class="cta-buttons">
+        <a href="#matrix" class="btn btn-primary">View Full Matrix</a>
+        <a href="index.html" class="btn btn-outline">All Frameworks</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="8" fill="#0057FF"/><path d="M20 8L10 14v8l10 6 10-6v-8L20 8z" fill="white" opacity="0.9"/><path d="M20 22v8" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="31" r="2" fill="white"/></svg>
+        <span>KeeperPAM</span>
+      </div>
+      <p class="footer-note">Compliance mappings are provided for informational purposes. Organizations should conduct formal assessments with qualified assessors.</p>
+      <p class="footer-copy">&copy; 2026 Keeper Security, Inc.</p>
+    </div>
+  </footer>
+
+  <!-- Coverage Modal -->
+  <div class="modal-overlay" id="modalOverlay" style="display:none">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <code class="modal-practice-id" id="modalPracticeId"></code>
+          <span id="modalTierBadge"></span>
+          <span id="modalCoverageBadge"></span>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <p class="modal-description" id="modalDescription"></p>
+      <hr class="modal-divider"/>
+      <h4 class="modal-section-title">KeeperPAM Product Alignment</h4>
+      <div class="modal-alignments" id="modalAlignments"></div>
+    </div>
+  </div>
+
+  <!-- Data scripts – all loaded, only active framework is used -->
+  <script src="frameworks-index.js"></script>
+  <script src="data-cmmc.js"></script>
+  <script src="data-pci.js"></script>
+  <script src="data-hipaa.js"></script>
+  <script src="data-gdpr.js"></script>
+  <script src="data-soc2.js"></script>
+  <script src="data-iso27001.js"></script>
+  <script src="data-fedramp.js"></script>
+  <script src="data-nist80063.js"></script>
+  <script src="data-glba.js"></script>
+  <script src="data-nydfs.js"></script>
+  <script src="data-fisma.js"></script>
+  <script src="data-sox.js"></script>
+  <script src="data-ncua.js"></script>
+  <script src="data-cis.js"></script>
+  <script src="data-nerccip.js"></script>
+  <script src="compliance-app.js"></script>
+</body>
+</html>
