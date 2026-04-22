@@ -813,6 +813,19 @@ a:hover { text-decoration: underline; }
   border-left: 3px solid var(--green);
 }
 
+/* practice-id and module-chip on white/light backgrounds (accordion) */
+.practice-row .practice-id {
+  background: #1A1200;
+  color: #FFD700;
+  border: 1px solid #5C4400;
+}
+
+.accordion-body .module-chip {
+  background: #1A1200;
+  color: #FFD700;
+  border-color: #5C4400;
+}
+
 /* ── CTA Section ───────────────────────────────────────────── */
 .cta-section {
   background: linear-gradient(135deg, #111111 0%, #1A1A1A 100%);
