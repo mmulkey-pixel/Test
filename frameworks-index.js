@@ -204,6 +204,20 @@ const FRAMEWORK_INDEX = [
     ]
   },
   {
+    id: "dod-il5", name: "DoD IL5",
+    fullName: "DoD Cloud Computing SRG — Impact Level 5",
+    shortDesc: "DoD security requirements for sensitive CUI and National Security System data hosted in commercial cloud.",
+    authority: "Defense Information Systems Agency (DISA)", applicability: "DoD cloud deployments hosting sensitive CUI or NSS workloads",
+    assessmentType: "DISA Provisional Authorization (PA) + FedRAMP High baseline",
+    category: "federal", color: "#0F3460", icon: "🎖️", mappedControls: 14,
+    sectors: ["Defense", "Government", "DIB"],
+    tiers: [
+      { label: "FedRAMP High", name: "Baseline Controls",         desc: "NIST SP 800-53 High baseline inherited by all IL5 systems from the underlying CSP authorization." },
+      { label: "DoD Overlay",  name: "IL5-Specific Requirements", desc: "Additional DoD-mandated controls and parameter values beyond the FedRAMP High baseline." },
+      { label: "Mission Owner", name: "Enhanced Protections",     desc: "Supplemental controls applied by mission owners for specific workload sensitivity." }
+    ]
+  },
+  {
     id: "nerc-cip", name: "NERC-CIP",
     fullName: "NERC Critical Infrastructure Protection Standards",
     shortDesc: "Mandatory reliability standards protecting the North American bulk electric system from cyber threats.",
