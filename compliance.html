@@ -31,6 +31,7 @@
         <a href="#overview">Overview</a>
         <a href="#matrix">Matrix</a>
         <a href="#controls">Controls</a>
+        <a href="#sources">Sources</a>
       </nav>
     </div>
   </header>
@@ -82,18 +83,12 @@
   <!-- Compliance Matrix -->
   <section id="matrix" class="section section-dark">
     <div class="container">
-      <h2 class="section-title">Compliance Coverage Matrix</h2>
-      <p class="section-intro">Filter by tier or coverage level. Click a coverage badge to see how each KeeperPAM module addresses that specific control.</p>
+      <h2 class="section-title">Compliance Mapping Matrix</h2>
+      <p class="section-intro">Filter by tier to explore how KeeperPAM modules address each control requirement.</p>
       <div class="filter-bar">
         <div class="filter-group">
           <label>Tier:</label>
           <div id="tierFilters"></div>
-        </div>
-        <div class="filter-group">
-          <label>Coverage:</label>
-          <button class="filter-btn active" data-filter-coverage="all">All</button>
-          <button class="filter-btn" data-filter-coverage="full">Full</button>
-          <button class="filter-btn" data-filter-coverage="partial">Partial</button>
         </div>
       </div>
       <div class="matrix-table-wrap">
@@ -105,7 +100,7 @@
               <th>Description</th>
               <th>Tier</th>
               <th>KeeperPAM Modules</th>
-              <th>Coverage</th>
+              <th>Implementation Guidance</th>
             </tr>
           </thead>
           <tbody id="matrixBody"></tbody>
@@ -118,8 +113,17 @@
   <section id="controls" class="section section-light">
     <div class="container">
       <h2 class="section-title">Controls Breakdown by Domain</h2>
-      <p class="section-intro">Expand each domain to view individual controls, implementation guidance, and KeeperPAM coverage details.</p>
+      <p class="section-intro">Expand each domain to view individual controls, implementation guidance, and KeeperPAM module details.</p>
       <div id="accordionContainer" class="accordion-container"></div>
+    </div>
+  </section>
+
+  <!-- Sources & References -->
+  <section id="sources" class="section section-dark">
+    <div class="container">
+      <h2 class="section-title">Sources &amp; References</h2>
+      <p class="section-intro">Official regulatory documentation and independent industry research supporting this compliance mapping.</p>
+      <div id="sourcesContainer"></div>
     </div>
   </section>
 
@@ -148,26 +152,9 @@
     </div>
   </footer>
 
-  <!-- Coverage Modal -->
-  <div class="modal-overlay" id="modalOverlay" style="display:none">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <code class="modal-practice-id" id="modalPracticeId"></code>
-          <span id="modalTierBadge"></span>
-          <span id="modalCoverageBadge"></span>
-        </div>
-        <button class="modal-close" onclick="closeModal()">✕</button>
-      </div>
-      <p class="modal-description" id="modalDescription"></p>
-      <hr class="modal-divider"/>
-      <h4 class="modal-section-title">KeeperPAM Product Alignment</h4>
-      <div class="modal-alignments" id="modalAlignments"></div>
-    </div>
-  </div>
-
   <!-- Data scripts – all loaded, only active framework is used -->
   <script src="frameworks-index.js"></script>
+  <script src="sources-data.js"></script>
   <script src="data-cmmc.js"></script>
   <script src="data-pci.js"></script>
   <script src="data-hipaa.js"></script>

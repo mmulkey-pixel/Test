@@ -4,21 +4,8 @@
   let currentFramework = null;
   let currentPractices = [];
   let activeTier = "all";
-  let activeCoverage = "all";
 
   // ── Helpers ─────────────────────────────────────────────────
-  function coverageBadge(coverage, clickable, practiceId) {
-    const map = {
-      full:    { cls: "badge-full",    label: "Full Coverage" },
-      partial: { cls: "badge-partial", label: "Partial Coverage" },
-    };
-    const b = map[coverage] || { cls: "badge-comp", label: coverage };
-    const attrs = clickable
-      ? `style="cursor:pointer" title="Click to see product alignment" onclick="openModal('${practiceId}')" tabindex="0" role="button" onkeydown="if(event.key==='Enter')openModal('${practiceId}')" `
-      : "";
-    return `<span class="badge ${b.cls} ${clickable ? "badge-clickable" : ""}" ${attrs}>${b.label}</span>`;
-  }
-
   function tierBadge(tier, fw) {
     const tierObj = fw.tiers && fw.tiers[tier - 1];
     const label = tierObj ? tierObj.label : `Tier ${tier}`;
@@ -123,11 +110,9 @@
     if (!currentFramework || !currentPractices.length) return;
     const fw = currentFramework;
     const tbody = document.getElementById("matrixBody");
-    const rows = currentPractices.filter(p => {
-      const tierMatch = activeTier === "all" || p.tier === parseInt(activeTier);
-      const covMatch  = activeCoverage === "all" || p.coverage === activeCoverage;
-      return tierMatch && covMatch;
-    });
+    const rows = currentPractices.filter(p =>
+      activeTier === "all" || p.tier === parseInt(activeTier)
+    );
     if (!rows.length) {
       tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No controls match the selected filters.</td></tr>`;
       return;
@@ -142,20 +127,9 @@
         <td class="practice-desc">${p.description}</td>
         <td>${tierBadge(p.tier, fw)}</td>
         <td>${moduleChips(p.modules)}</td>
-        <td>${coverageBadge(p.coverage, true, p.id)}</td>
+        <td class="guidance-cell">${p.guidance}</td>
       </tr>`
     ).join("");
-  }
-
-  function wireCoverageFilters() {
-    document.querySelectorAll("[data-filter-coverage]").forEach(btn => {
-      btn.addEventListener("click", function () {
-        document.querySelectorAll("[data-filter-coverage]").forEach(b => b.classList.remove("active"));
-        this.classList.add("active");
-        activeCoverage = this.dataset.filterCoverage;
-        renderMatrix();
-      });
-    });
   }
 
   // ── Accordion ────────────────────────────────────────────────
@@ -168,8 +142,6 @@
     container.innerHTML = domains.map(domain => {
       const practices = currentPractices.filter(p => p.domainCode === domain.code);
       if (!practices.length) return "";
-      const fullCount = practices.filter(p => p.coverage === "full").length;
-      const partialCount = practices.filter(p => p.coverage === "partial").length;
 
       const practiceRows = practices.map(p => `
         <div class="practice-row">
@@ -177,7 +149,6 @@
             <div class="practice-row-left">
               <code class="practice-id">${p.id}</code>
               ${tierBadge(p.tier, fw)}
-              ${coverageBadge(p.coverage, true, p.id)}
             </div>
             <button class="practice-expand-btn" onclick="togglePractice(this)">
               <span>Details</span>
@@ -204,8 +175,6 @@
             </div>
             <div class="accordion-meta">
               <span class="meta-pill">${practices.length} controls</span>
-              <span class="meta-pill meta-full">${fullCount} full</span>
-              ${partialCount ? `<span class="meta-pill meta-partial">${partialCount} partial</span>` : ""}
               <svg class="accordion-chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
             </div>
           </button>
@@ -216,51 +185,49 @@
     }).join("");
   }
 
-  // ── Modal ─────────────────────────────────────────────────────
-  window.openModal = function (practiceId) {
-    const fw = currentFramework;
-    const p = currentPractices.find(x => x.id === practiceId);
-    if (!p || !fw) return;
+  // ── Sources ───────────────────────────────────────────────────
+  function renderSourceCard(s) {
+    const typeColors = {
+      official:   { bg: "rgba(0,87,255,.12)",   text: "#60A5FA", border: "rgba(0,87,255,.25)" },
+      standard:   { bg: "rgba(5,150,105,.12)",  text: "#34D399", border: "rgba(5,150,105,.25)" },
+      analyst:    { bg: "rgba(124,58,237,.12)", text: "#C4B5FD", border: "rgba(124,58,237,.25)" },
+      government: { bg: "rgba(217,119,6,.12)",  text: "#FCD34D", border: "rgba(217,119,6,.25)" },
+    };
+    const c = typeColors[s.type] || typeColors.standard;
+    return `
+      <a href="${s.url}" target="_blank" rel="noopener noreferrer" class="source-card">
+        <div class="source-type-badge" style="background:${c.bg};color:${c.text};border-color:${c.border}">${s.type || "reference"}</div>
+        <div class="source-title">${s.title}</div>
+        <div class="source-org">${s.org}</div>
+        ${s.desc ? `<p class="source-desc">${s.desc}</p>` : ""}
+        <div class="source-arrow">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7.5 4l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+      </a>`;
+  }
 
-    document.getElementById("modalPracticeId").textContent = p.id;
-    document.getElementById("modalTierBadge").innerHTML = tierBadge(p.tier, fw);
-    document.getElementById("modalCoverageBadge").innerHTML = coverageBadge(p.coverage, false, "");
-    document.getElementById("modalDescription").textContent = p.description;
-
-    const alignments = p.alignment || {};
-    const alignHtml = p.modules.map(m => {
-      const mod = KEEPER_MODULES[m];
-      const text = alignments[m] || "This module supports compliance with this control through its core capabilities.";
-      return `
-        <div class="alignment-item">
-          <div class="alignment-header">
-            <span class="alignment-icon">${mod ? mod.icon : "•"}</span>
-            <strong class="alignment-name">${mod ? mod.name : m}</strong>
-          </div>
-          <p class="alignment-text">${text}</p>
+  function renderSources(fw) {
+    const container = document.getElementById("sourcesContainer");
+    if (!container) return;
+    const fwSources  = (window.FRAMEWORK_SOURCES  || {})[fw.id] || [];
+    const pamSources = window.PAM_INDUSTRY_SOURCES || [];
+    let html = "";
+    if (fwSources.length) {
+      html += `
+        <div class="sources-category">
+          <h3 class="sources-cat-title">Official ${fw.name} Documentation</h3>
+          <div class="sources-grid">${fwSources.map(renderSourceCard).join("")}</div>
         </div>`;
-    }).join("");
-    document.getElementById("modalAlignments").innerHTML = alignHtml;
-    document.getElementById("modalOverlay").style.display = "flex";
-    document.body.style.overflow = "hidden";
-  };
-
-  window.closeModal = function () {
-    document.getElementById("modalOverlay").style.display = "none";
-    document.body.style.overflow = "";
-  };
-
-  // Close modal on backdrop click
-  document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("modalOverlay").addEventListener("click", function (e) {
-      if (e.target === this) closeModal();
-    });
-  });
-
-  // Close on ESC
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeModal();
-  });
+    }
+    if (pamSources.length) {
+      html += `
+        <div class="sources-category">
+          <h3 class="sources-cat-title">PAM Industry Research &amp; Government Guidance</h3>
+          <div class="sources-grid">${pamSources.map(renderSourceCard).join("")}</div>
+        </div>`;
+    }
+    container.innerHTML = html;
+  }
 
   // ── Smooth scroll ─────────────────────────────────────────────
   function wireSmoothScroll() {
@@ -293,8 +260,8 @@
     renderTiers(currentFramework);
     buildTierFilters(currentFramework);
     renderMatrix();
-    wireCoverageFilters();
     renderAccordion();
+    renderSources(currentFramework);
     wireSmoothScroll();
   });
 })();
